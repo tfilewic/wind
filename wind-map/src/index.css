@@ -13,8 +13,7 @@ code {
 }
 
 .leaflet-container {
-  height: 100vh; /* Adjusts height to remove scrollbar */
+  height: 100vh;
   width: 100%;
 }
-
 

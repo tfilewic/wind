@@ -1,6 +1,9 @@
-import React from "react";  //react
+import React from "react";
+import { useState, useEffect } from "react";   //hook for storing parsed coords 
 import { MapContainer, TileLayer } from "react-leaflet";  //leaflet components
 import "leaflet/dist/leaflet.css"; //leaflet css for map rendering
+import GpxParser from "./components/GpxParser"; //for parsing gpx files
+import "./App.css";
 
 
 
@@ -8,6 +11,9 @@ let center = [50.931772, -114.115163];
 let zoom = 15;
 
 function App() {
+  
+  const [coordinates, setCoordinates] = useState(null); //store parsed gpx coordinates
+
   return (
     <div> 
       <MapContainer   
@@ -18,7 +24,12 @@ function App() {
           url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
           attribution='&copy; <a href="https://www.esri.com/">Esri</a>, Maxar, Earthstar Geographics'
         />
-      </MapContainer>     
+      </MapContainer>   
+
+
+      {/* GPX Parser: Pass setCoordinates so it updates state */}
+      <GpxParser setCoordinates={setCoordinates} />
+
     </div>
   );
 }
