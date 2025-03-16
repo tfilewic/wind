@@ -5,7 +5,7 @@ Trying to learn some frontend with React, Leaflet.js, JavaScript, and API Integr
 ## Project will:
 - [X] Display a map with Esri satellite imagery
 - [X] Display a .gpx route 
-- [ ] Fetch routes from Strava API
+- [X] Fetch routes from Strava API
 - [ ] Display wind direction and magnitude along the route
 - [ ] Fetch wind data from OpenWeatherMap
 - [ ] Implement a backend proxy to handle API requests
