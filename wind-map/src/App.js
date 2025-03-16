@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";   //hook for storing parsed coords 
 import { MapContainer, TileLayer, Polyline } from "react-leaflet";  //leaflet components
 import "leaflet/dist/leaflet.css"; //leaflet css for map rendering
-import GpxParser from "./components/GpxParser"; //for parsing gpx files
+import RouteBox from "./components/RouteBox"; 
+//import GpxParser from "./components/GpxParser"; //for parsing gpx files
 import Recenter from "./components/Recenter"; //for recentering and rezooming map to fit route
 import "./App.css";
 
@@ -32,8 +33,7 @@ function App() {
       </MapContainer>   
 
 
-      {/* GPX Parser: Pass setCoordinates so it updates state */}
-      <GpxParser setCoordinates={setCoordinates} />
+      <RouteBox setCoordinates={setCoordinates} />
 
     </div>
   );

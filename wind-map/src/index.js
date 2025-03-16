@@ -4,10 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import StravaCallback from './components/StravaCallback'; 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+     <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/auth/strava/callback" element={<StravaCallback />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

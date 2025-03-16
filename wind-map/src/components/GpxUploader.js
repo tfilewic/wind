@@ -1,7 +1,7 @@
 /**
- * GpxParser.js
+ * GpxUploader.js
  * 
- * Parses GPX files and extracts route coordinates for mapping in Leaflet.js.
+ * Uploads and parses GPX files to extract route coordinates for mapping in Leaflet.js.
  * 
  * @author tfilewic
  * @version 2025-03-14 
@@ -12,9 +12,9 @@ import { DOMParser } from "@xmldom/xmldom"; //reads gpx as xml
 import { gpx } from "@tmcw/togeojson";  //converts gpx xml to geojson
 
 
-function GpxParser({ setCoordinates }) {
+function GpxUploader({ setCoordinates, setRouteUploaded }) {
 
-    const [uploaded, setUploaded] = useState(false);
+    //const [fileUploaded, setFileUploaded] = useState(false);
 
 
     //handle file upload event
@@ -43,7 +43,8 @@ function GpxParser({ setCoordinates }) {
 
         //set coordinates
         setCoordinates(latLongCoordinates); //update state with parsed coordinates
-        setUploaded(true);  //mark as uploaded
+        setRouteUploaded(true);
+        //setFileUploaded(true);  //mark as uploaded
         };
 
     reader.readAsText(file);  //read file as text
@@ -51,12 +52,12 @@ function GpxParser({ setCoordinates }) {
 
 
     return (
-        !uploaded && <div className="upload-box">
+        <div className="upload-box">
             <input type="file" accept=".gpx" onChange={fileUpload} />
         </div>
     );
 
 }
 
-export default GpxParser;
+export default GpxUploader;
 
