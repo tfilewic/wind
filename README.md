@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Wind and Route Visualization
 
 Trying to learn some frontend with React, Leaflet.js, JavaScript, and API Integration.
