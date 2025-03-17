@@ -16,9 +16,10 @@ let zoom = 15;
 function App() {
   
   const [coordinates, setCoordinates] = useState(null); //store parsed gpx coordinates
-
+  /*
   useEffect(() => localStorage.removeItem("stravaToken"), []);  //clear strava auth token
-
+  console.log("cleared token-----------");
+*/
   return (
     <div> 
       <MapContainer   

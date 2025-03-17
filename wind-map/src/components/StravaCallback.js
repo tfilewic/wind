@@ -2,7 +2,7 @@
  * StravaCallback.js
  * 
  * Strava OAuth callback component
- * Extracts access token from url, stores it in localstorage, then redirects user back to main app
+ * Extracts access token from url, stores it in sessionStorage, then redirects user back to main app
  * 
  * @author tfilewic
  * @version 2025-03-15 
@@ -27,19 +27,12 @@ function StravaCallback() {
     const ID = Number(process.env.REACT_APP_STRAVA_ID);
     const SECRET = process.env.REACT_APP_STRAVA_SECRET;
 
-
-    console.log("Strava ID:", ID);                    //DEBUG
-    console.log("Strava Secret:", SECRET);                    //DEBUG
-    console.log("Auth Code:", code);                    //DEBUG
-
-
     if (code) {
         //exchange code for token
         fetch("https://www.strava.com/oauth/token", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-
             client_id: ID, 
             client_secret: SECRET,
             code: code,
@@ -51,8 +44,8 @@ function StravaCallback() {
         console.log("Strava API Response:", data);                    //DEBUG
 
         if (data.access_token) {
-          localStorage.setItem("stravaToken", data.access_token);
-          console.log("Stored Strava Token:", localStorage.getItem("stravaToken"));                    //DEBUG
+          sessionStorage.setItem("stravaToken", data.access_token);
+          console.log("Stored Strava Token:", sessionStorage.getItem("stravaToken"));                    //DEBUG
         }
       })
       .finally(() => {

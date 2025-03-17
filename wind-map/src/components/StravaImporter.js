@@ -19,14 +19,15 @@ function decodePolyline(encoded) {
 
 function StravaImporter({ setCoordinates, setRouteUploaded }) {
 
-    const [authenticated, authenticate] = useState(null);  //if there exists a strava authentication token
+//    const [authenticated, authenticate] = useState(null);  //if there exists a strava authentication token
     const [routes, getRoutes] = useState([]);  //collection of strava routes
     const [loaded, load] = useState(false);  //if route is loaded
 
-
+    const token =  sessionStorage.getItem("stravaToken");
+    console.log("token " + token);
+/*
     //check for a Strava token in localStorage
     useEffect(() => {
-        const token = localStorage.getItem("stravaToken");
         console.log("Retrieved Token in StravaImporter:", token); // Debugging
         if (token) {
             authenticate(true);
@@ -34,11 +35,10 @@ function StravaImporter({ setCoordinates, setRouteUploaded }) {
             authenticate(false);
         }
     }, []);
-
+*/
     //fetch user routes
     useEffect(() => {
-        if (authenticated) {
-          const token = localStorage.getItem("stravaToken");    //retrieve auth token
+        if (token) {
           fetch('https://www.strava.com/api/v3/athlete/routes', { //api call to fetch routes
             headers: { 'Authorization': `Bearer ${token}` } //add token to header
           })
@@ -47,13 +47,17 @@ function StravaImporter({ setCoordinates, setRouteUploaded }) {
                 getRoutes(data);   //update state with routes
                 load(true);   //flag as loaded
             })
-            .catch(err => console.error(err));  //log errors
+            .catch(err => {
+                console.log("error in routes");
+                console.error(err); //log errors
+                sessionStorage.removeItem("stravaToken");
+            }); 
         }
-      }, [authenticated]);
+      }, [token]);
 
 
     //redirect to Strava OAuth endpoint
-    if (!authenticated) {
+    if (!token) {
         return (
             <button onClick={() =>
                 (window.location.href =

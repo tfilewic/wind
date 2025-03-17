@@ -49,7 +49,7 @@ function WindArrows(){
                     });
                 }
             }
-            console.log("OWM Key:", process.env.REACT_APP_OPENWEATHERMAP_KEY);
+            
             //fetch wind data from OpenWeatherMap API for each point
             Promise.all(
                 points.map((point) =>
