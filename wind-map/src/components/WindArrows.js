@@ -19,6 +19,10 @@ function WindArrows(){
     const [gridPoints, setGridPoints] = useState([]);   //stores center coordinates of each cell
     
     useEffect(() => {
+
+
+        let debounceTimeout; //for debouncing updateGrid
+
         const updateGrid = () => {
             //get map bounds
             const bounds = map.getBounds(); //bounds of map
@@ -65,37 +69,27 @@ function WindArrows(){
                 setGridPoints(updatedPoints);   //update state with grid points
               });
         };
-/*
-            Promise.all(
-                points.map((point) =>
-                    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${point.lat}&lon=${point.lng}&units=metric&appid=0934da6acec092c7576234a21f6c283b`)
-                    .then((res) => res.json())
-                    .then((data) => {
-                    console.log("Coords: (" + point.lat + ", " + point.lng + "), Speed: " + (data.wind.speed * 3.6) + " km/h, Dir: " + data.wind.deg + "°");
-                    return {
-                        ...point,
-                        windDirection: data.wind.deg,
-                        windSpeed: data.wind.speed * 3.6 // convert m/s to km/h
-                    };
-                    })
-                    .catch(() => ({
-                    ...point,
-                    windDirection: null,
-                    windSpeed: null
-                    }))
-                )
-            ).then((updatedPoints) => {
-                setGridPoints(updatedPoints);
-            });
+        
+
+        const updateGridDebounced = () => {
+            clearTimeout(debounceTimeout); //clear timeout
+            debounceTimeout = setTimeout(() => {
+            updateGrid(); //call updateGrid after 200ms delay
+            }, 200); //200ms debounce delay
         };
-*/
 
+        updateGridDebounced();
 
-        map.on("moveend", updateGrid);  //update grid when pan/zoom ends
-        updateGrid();
+        map.on("moveend", updateGridDebounced);  //update grid when pan/zoom ends
+        updateGridDebounced();
 
-        return () => map.off("moveend", updateGrid); //cleanup listener when map is removed
+        return () => {
+            map.off("moveend", updateGrid); //cleanup listener when map is removed
+            clearTimeout(debounceTimeout);  
+        }
+
     }, [map]);
+
 
     //return a marker for each cell centerpoint coordinates
     return (
