@@ -27,6 +27,7 @@ function StravaImporter({ setCoordinates, setRouteUploaded }) {
     //check for a Strava token in localStorage
     useEffect(() => {
         const token = localStorage.getItem("stravaToken");
+        console.log("Retrieved Token in StravaImporter:", token); // Debugging
         if (token) {
             authenticate(true);
         } else {
@@ -56,7 +57,9 @@ function StravaImporter({ setCoordinates, setRouteUploaded }) {
         return (
             <button onClick={() =>
                 (window.location.href =
-                "https://www.strava.com/oauth/authorize?client_id=152265&redirect_uri=http://localhost:3000/auth/strava/callback&response_type=code&scope=read,activity:read")
+                    "https://www.strava.com/oauth/authorize?client_id=" + 
+                    process.env.REACT_APP_STRAVA_ID + 
+                    "&redirect_uri=http://localhost:3000/auth/strava/callback&response_type=code&scope=read,activity:read")
             }>
             Authenticate with Strava
             </button>

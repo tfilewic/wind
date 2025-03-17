@@ -8,19 +8,30 @@
  * @version 2025-03-15 
  */
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-//TODO move to backend to keep private
-const ID = 152265;
-const SECRET = "8ec94d8c8b04b7df75d8727b01e2d39d7c09991c"
+
 
 
 function StravaCallback() {
   const navigate = useNavigate();
+  const hasFetched = useRef(false);
 
   useEffect(() => {
+    if (hasFetched.current) return; //stop if request already sent
+    hasFetched.current = true; //mark request as sent
+
+
     const code = new URLSearchParams(window.location.search).get("code");  //search current url for auth code
+    const ID = Number(process.env.REACT_APP_STRAVA_ID);
+    const SECRET = process.env.REACT_APP_STRAVA_SECRET;
+
+
+    console.log("Strava ID:", ID);                    //DEBUG
+    console.log("Strava Secret:", SECRET);                    //DEBUG
+    console.log("Auth Code:", code);                    //DEBUG
+
 
     if (code) {
         //exchange code for token
@@ -37,8 +48,11 @@ function StravaCallback() {
       })
       .then(res => res.json())
       .then(data => {
+        console.log("Strava API Response:", data);                    //DEBUG
+
         if (data.access_token) {
           localStorage.setItem("stravaToken", data.access_token);
+          console.log("Stored Strava Token:", localStorage.getItem("stravaToken"));                    //DEBUG
         }
       })
       .finally(() => {

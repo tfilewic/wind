@@ -18,9 +18,10 @@ function WindArrows(){
     const map = useMap();   //get current Leaflet map
     const [gridPoints, setGridPoints] = useState([]);   //stores center coordinates of each cell
     
+
     useEffect(() => {
 
-
+        const KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
         let debounceTimeout; //for debouncing updateGrid
 
         const updateGrid = () => {
@@ -48,11 +49,11 @@ function WindArrows(){
                     });
                 }
             }
-
+            console.log("OWM Key:", process.env.REACT_APP_OPENWEATHERMAP_KEY);
             //fetch wind data from OpenWeatherMap API for each point
             Promise.all(
                 points.map((point) =>
-                  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${point.lat}&lon=${point.lng}&units=metric&appid=0934da6acec092c7576234a21f6c283b`)
+                    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${point.lat}&lon=${point.lng}&units=metric&appid=${KEY}`)
                     .then((res) => res.json())
                     .then((data) => ({
                         ...point,
@@ -103,8 +104,7 @@ function WindArrows(){
                         iconSize: [20, 30],
                         iconAnchor: [20, 20]
                     })}
-                    //rotationAngle={45}
-                    rotationAngle={point.windDirection || 270 }    //rotate marker by wind direction
+                    rotationAngle={point.windDirection || 0 }    //rotate marker by wind direction
                     rotationOrigin="center center"  //rotate about center
                 />
             )}
