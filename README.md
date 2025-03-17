@@ -8,7 +8,6 @@ Trying to learn some frontend with React, Leaflet.js, JavaScript, and API Integr
 - [X] Fetch routes from Strava API
 - [ ] Display wind direction and magnitude along the route
 - [ ] Fetch wind data from OpenWeatherMap
-- [ ] Implement a backend proxy to handle API requests
 
 ## Technologies Used
 - **React** – frontend framework for building the UI  
@@ -17,4 +16,10 @@ Trying to learn some frontend with React, Leaflet.js, JavaScript, and API Integr
 - **@tmcw/togeojson** – converts .gpx files to GeoJSON  
 - **GeoJSON** – data format for geographic information  
 - **Strava API** – to fetch user .gpx routes  
-- **OpenWeatherMap API** – to fetch wind data  
+- **OpenWeatherMap API** – to fetch wind data
+
+
+## TODO:
+- [ ] Implement a backend proxy to handle API requests
+- [ ] Create custom arrow using L.divIcon that scales its length based on wind magnitude
+
