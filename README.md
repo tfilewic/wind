@@ -8,8 +8,9 @@ Trying to learn some frontend with React, Leaflet.js, JavaScript, and API Integr
 - [X] Fetch routes from Strava API
 - [X] Display wind direction and magnitude along the route
 - [X] Fetch wind data from OpenWeatherMap
-- [ ] Implement a backend proxy to handle API requests
 - [ ] Create custom arrow using L.divIcon that scales its length based on wind magnitude
+- [ ] Implement AWS Lambda as a backend proxy for secure API requests.
+
 
 ## Technologies Used
 - **React** – frontend framework for building the UI  
