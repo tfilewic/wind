@@ -2,7 +2,7 @@
 
 Trying to learn some frontend with React, Leaflet.js, JavaScript, and API Integration.
 
-Web app to visualize wind direction and speed along a .gpx route so I can decide where I want to ride my bike on a given day.
+Web app to visualize wind direction along a .gpx route so I can decide where I want to ride my bike on a given day.
 
 ## Project will:
 - [X] Display a map with Esri satellite imagery
