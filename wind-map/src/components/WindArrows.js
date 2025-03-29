@@ -9,8 +9,8 @@
  * @version 2025-03-15 
  */
 
-import { useMap, Marker } from "react-leaflet";
-import { useEffect, useState } from "react";
+import { useMap, Marker, Tooltip } from "react-leaflet";
+import React, { useEffect, useState } from "react";
 import L from "leaflet";
 import "leaflet-rotatedmarker";
 
@@ -49,16 +49,16 @@ function WindArrows(){
                     });
                 }
             }
-            
+
             //fetch wind data from OpenWeatherMap API for each point
             Promise.all(
                 points.map((point) =>
-                    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${point.lat}&lon=${point.lng}&units=metric&appid=${KEY}`)
+                    fetch(`https://pro.openweathermap.org/data/2.5/weather?lat=${point.lat}&lon=${point.lng}&units=metric&appid=${KEY}`)
                     .then((res) => res.json())
                     .then((data) => ({
                         ...point,
                         windDirection: data.wind.deg,   //wind direction in degrees
-                        windSpeed: data.wind.speed      //wind speed converted to km/h
+                        windSpeed: data.wind.speed * 3.6    //wind speed converted to km/h
                       }))
                     .catch(() => ({
                       ...point,
@@ -92,24 +92,56 @@ function WindArrows(){
     }, [map]);
 
 
-    //return a marker for each cell centerpoint coordinates
+    //calculates arrow length by wind speed
+    function getArrowLength(speed) {
+        if (speed < 5) {
+            return 15;   //floor length at 3km/hr
+        } else if (speed <= 15) {   //3:1 up to 15km/hr
+            return speed * 3;
+        } else if (speed <= 30) {   //2:1 from 15-30km/hr
+            return (15 * 3) + ((speed - 15) * 2);
+        } else if (speed <= 90) {   //1:1 from 30-90km/hr
+            return (15 * 3) + ((30 - 15) * 2) + ((speed - 30) * 1);
+        } else if (speed > 90) {
+            return 135; //ceiling length at 90km/hr
+        }
+    }
+
+    //calculates arrow width by wind speed
+    function getArrowWidth(speed) {
+        if (speed < 5) {
+            return 10;   //floor width at 3km/hr
+        } else if (speed <= 10) {   //2:1 up to 10km/hr
+            return speed * 2;
+        } else if (speed <= 30) {   //1:1 from 00-30km/hr
+            return (20) + ((speed - 10) * 0.5);
+        } else if (speed > 30) {
+            return 32; //ceiling width at 30km/hr
+        }
+    }
+
+
+
+    //return a scaled arrow marker for each cell centerpoint coordinates
     return (
         <>
-            {gridPoints.map((point, index) =>
+            {gridPoints.map((point, index) => 
+            
                 <Marker
                     key={index} //index as key for each marker
                     position={[point.lat, point.lng]}
                     icon={L.icon({
                         iconUrl: "arrow.png",
-                        iconSize: [20, 30],
+                        iconSize: [getArrowWidth(point.windSpeed), getArrowLength(point.windSpeed)],
                         iconAnchor: [20, 20]
                     })}
                     rotationAngle={point.windDirection || 0 }    //rotate marker by wind direction
                     rotationOrigin="center center"  //rotate about center
                 />
+            
             )}
         </>
-    )
+    )     
 }
 
 export default WindArrows;
