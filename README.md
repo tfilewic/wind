@@ -8,10 +8,12 @@ Web app to visualize wind along a .gpx route so I can decide where I want to rid
 - [X] Display a map with Esri satellite imagery
 - [X] Display a .gpx route 
 - [X] Fetch routes from Strava API
-- [X] Display wind direction and magnitude along the route
+- [X] Display wind direction and magnitude along the route with a scaled arrow
 - [X] Fetch wind data from OpenWeatherMap
-- [ ] Create custom arrow using L.divIcon that scales its length based on wind magnitude
 - [ ] Implement AWS Lambda as a backend proxy for secure API requests.
+- [ ] Host frontend on AWS S3 & CloudFront
+- [ ] Set up HTTPS with AWS Certificate Manager and CloudFront
+- [ ] Use custom domain
 
 
 ## Technologies Used

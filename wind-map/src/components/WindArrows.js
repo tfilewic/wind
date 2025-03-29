@@ -126,19 +126,28 @@ function WindArrows(){
     return (
         <>
             {gridPoints.map((point, index) => 
-            
-                <Marker
-                    key={index} //index as key for each marker
-                    position={[point.lat, point.lng]}
-                    icon={L.icon({
-                        iconUrl: "arrow.png",
-                        iconSize: [getArrowWidth(point.windSpeed), getArrowLength(point.windSpeed)],
-                        iconAnchor: [20, 20]
-                    })}
-                    rotationAngle={point.windDirection || 0 }    //rotate marker by wind direction
-                    rotationOrigin="center center"  //rotate about center
-                />
-            
+                <div key={index}>
+                    <Marker
+                        position={[point.lat, point.lng]}
+                        icon={L.icon({
+                            iconUrl: "arrow.png",
+                            iconSize: [getArrowWidth(point.windSpeed), getArrowLength(point.windSpeed)],
+                            iconAnchor: [20, 20]
+                        })}
+                        rotationAngle={point.windDirection || 0 }    //rotate marker by wind direction
+                        rotationOrigin="center center"  //rotate about center
+                    />
+                    <Marker
+                        position={[point.lat, point.lng]}
+                        icon={L.divIcon({
+                            className: "wind-speed-label",
+                            iconSize: [30, 30],
+                            iconAnchor: [15, 15],
+                            html: `<div style="font-size:15px; color:white; font-weight:bold;">${Math.round(point.windSpeed)}</div>`
+                        })}
+                    />
+                    
+                </div>
             )}
         </>
     )     
