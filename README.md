@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# Wind and Route Visualization
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Trying to learn some frontend with React, Leaflet.js, JavaScript, and API Integration.
 
-## Available Scripts
+Web app to visualize wind along a .gpx route so I can decide where I want to ride my bike.
 
-In the project directory, you can run:
+## Project will:
+- [X] Display a map with Esri satellite imagery
+- [X] Display a .gpx route 
+- [X] Fetch routes from Strava API
+- [X] Display wind direction and magnitude along the route with a scaled arrow
+- [X] Fetch wind data from OpenWeatherMap
+- [ ] Implement AWS Lambda as a backend proxy for secure API requests.
+- [ ] Host frontend on AWS S3 & CloudFront
+- [ ] Set up HTTPS with AWS Certificate Manager and CloudFront
+- [ ] Use custom domain
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Technologies Used
+- **React** – frontend framework for building the UI  
+- **Leaflet.js** – mapping library for displaying routes and wind data  
+- **Esri Satellite Imagery** – basemap  
+- **@tmcw/togeojson** – converts .gpx files to GeoJSON  
+- **GeoJSON** – data format for geographic information  
+- **Strava API** – to fetch user .gpx routes  
+- **OpenWeatherMap API** – to fetch wind data  
