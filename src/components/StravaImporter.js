@@ -47,8 +47,10 @@ function StravaImporter({ setCoordinates, setRouteUploaded }) {
     if (!token) {
         window.location.href =
             "https://www.strava.com/oauth/authorize?client_id=" + 
-            process.env.REACT_APP_STRAVA_ID + 
-            "&redirect_uri=http://localhost:3000/auth/strava/callback&response_type=code&scope=read,activity:read";
+            process.env.REACT_APP_STRAVA_ID +  
+            "&redirect_uri=" + 
+            encodeURIComponent(process.env.REACT_APP_STRAVA_REDIRECT_URI) + 
+            "&response_type=code&scope=read,activity:read";
         return null;
     }
 

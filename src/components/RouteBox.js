@@ -7,7 +7,7 @@
  * @version 2025-04-05 
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import GpxUploader from "./GpxUploader"; 
 import StravaImporter from "./StravaImporter";
 

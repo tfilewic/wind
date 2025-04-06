@@ -41,11 +41,9 @@ function StravaCallback() {
       })
       .then(res => res.json())
       .then(data => {
-        console.log("Strava API Response:", data);                    //DEBUG
 
         if (data.access_token) {
           sessionStorage.setItem("stravaToken", data.access_token);
-          console.log("Stored Strava Token:", sessionStorage.getItem("stravaToken"));                    //DEBUG
         }
       })
       .finally(() => {

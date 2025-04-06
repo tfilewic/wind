@@ -7,7 +7,6 @@
  * @version 2025-03-14 
  */
 
-import { useState } from "react";   //hook for storing parsed coords 
 import { DOMParser } from "@xmldom/xmldom"; //reads gpx as xml
 import { gpx } from "@tmcw/togeojson";  //converts gpx xml to geojson
 

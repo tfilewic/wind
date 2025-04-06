@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";   //hook for storing parsed coords 
+import { useState } from "react";   //hook for storing parsed coords 
 import { MapContainer, TileLayer, Polyline } from "react-leaflet";  //leaflet components
 import "leaflet/dist/leaflet.css"; //leaflet css for map rendering
 import RouteBox from "./components/RouteBox"; 
