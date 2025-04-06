@@ -25,6 +25,6 @@ Web app to visualize wind along a .gpx route so I can decide where I want to rid
 - **Strava API** – to fetch user .gpx routes  
 - **OpenWeatherMap API** – to fetch wind data  
 - **AWS S3** – for static site hosting
-- **AWS CloudFront** – for CDN and SPA routing support
+- **AWS CloudFront** – to enable HTTPS, custom domain hosting, and SPA routing
 - **AWS Certificate Manager** – for HTTPS setup
 - **AWS Route 53** – for DNS and custom domain setup
