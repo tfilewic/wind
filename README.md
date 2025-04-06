@@ -11,9 +11,9 @@ Web app to visualize wind along a .gpx route so I can decide where I want to rid
 - [X] Display wind direction and magnitude along the route with a scaled arrow
 - [X] Fetch wind data from OpenWeatherMap
 - [ ] Implement AWS Lambda as a backend proxy for secure API requests.
-- [ ] Host frontend on AWS S3 & CloudFront
-- [ ] Set up HTTPS with AWS Certificate Manager and CloudFront
-- [ ] Use custom domain
+- [X] Host frontend on AWS S3 & CloudFront
+- [X] Set up HTTPS with AWS Certificate Manager and CloudFront
+- [X] Use custom domain configured via AWS Route 53
 
 
 ## Technologies Used
@@ -24,3 +24,7 @@ Web app to visualize wind along a .gpx route so I can decide where I want to rid
 - **GeoJSON** – data format for geographic information  
 - **Strava API** – to fetch user .gpx routes  
 - **OpenWeatherMap API** – to fetch wind data  
+- **AWS S3** – for static site hosting
+- **AWS CloudFront** – for CDN and SPA routing support
+- **AWS Certificate Manager** – for HTTPS setup
+- **AWS Route 53** – for DNS and custom domain setup
