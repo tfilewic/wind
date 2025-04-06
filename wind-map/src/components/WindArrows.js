@@ -6,11 +6,11 @@
  * Updates upon zoom or pan
  * 
  * @author tfilewic
- * @version 2025-03-15 
+ * @version 2025-03-29 
  */
 
-import { useMap, Marker, Tooltip } from "react-leaflet";
-import React, { useEffect, useState } from "react";
+import { useMap, Marker } from "react-leaflet";
+import { useEffect, useState } from "react";
 import L from "leaflet";
 import "leaflet-rotatedmarker";
 

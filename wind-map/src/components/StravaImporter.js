@@ -4,7 +4,7 @@
  * Buttons to upload gpx files or import routes from strava
  * 
  * @author tfilewic
- * @version 2025-03-15 
+ * @version 2025-04-05 
  */
 
 import React, { useState, useEffect } from "react";
@@ -19,23 +19,10 @@ function decodePolyline(encoded) {
 
 function StravaImporter({ setCoordinates, setRouteUploaded }) {
 
-//    const [authenticated, authenticate] = useState(null);  //if there exists a strava authentication token
     const [routes, getRoutes] = useState([]);  //collection of strava routes
     const [loaded, load] = useState(false);  //if route is loaded
+    const token =  sessionStorage.getItem("stravaToken");   //strava authentication token
 
-    const token =  sessionStorage.getItem("stravaToken");
-    console.log("token " + token);
-/*
-    //check for a Strava token in localStorage
-    useEffect(() => {
-        console.log("Retrieved Token in StravaImporter:", token); // Debugging
-        if (token) {
-            authenticate(true);
-        } else {
-            authenticate(false);
-        }
-    }, []);
-*/
     //fetch user routes
     useEffect(() => {
         if (token) {
@@ -58,16 +45,11 @@ function StravaImporter({ setCoordinates, setRouteUploaded }) {
 
     //redirect to Strava OAuth endpoint
     if (!token) {
-        return (
-            <button onClick={() =>
-                (window.location.href =
-                    "https://www.strava.com/oauth/authorize?client_id=" + 
-                    process.env.REACT_APP_STRAVA_ID + 
-                    "&redirect_uri=http://localhost:3000/auth/strava/callback&response_type=code&scope=read,activity:read")
-            }>
-            Authenticate with Strava
-            </button>
-        )
+        window.location.href =
+            "https://www.strava.com/oauth/authorize?client_id=" + 
+            process.env.REACT_APP_STRAVA_ID + 
+            "&redirect_uri=http://localhost:3000/auth/strava/callback&response_type=code&scope=read,activity:read";
+        return null;
     }
 
     //display loading message until routes are loaded

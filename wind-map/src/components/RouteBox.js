@@ -4,7 +4,7 @@
  * Buttons to upload gpx files or import routes from strava
  * 
  * @author tfilewic
- * @version 2025-03-15 
+ * @version 2025-04-05 
  */
 
 import React, { useState, useEffect } from "react";
@@ -15,14 +15,23 @@ function RouteBox({ setCoordinates }) {
 
     const [mode, setMode] = useState(null);  //null (choose mode), upload, or strava
     const [routeUploaded, setRouteUploaded] = useState(false);  //if a route is uploaded
+    const token = sessionStorage.getItem("stravaToken")
 
+    //redirecting to Strava OAuth
+    if (!token && !routeUploaded && mode === "strava") {
+        return  <StravaImporter setCoordinates={setCoordinates} setRouteUploaded={setRouteUploaded} />
+    };
+    
+    //show upload-box
     return (
         !routeUploaded && <div className="upload-box">
 
             {/* no mode selected- show two option buttons */}
             {!routeUploaded && !mode && (
-                <>
-                    <button onClick={() => setMode("strava")}>Import route from Strava</button>
+                <>  
+                    <button onClick={() => setMode("strava")}> 
+                        {token ? "Import route from Strava" : "Authenticate with Strava"} 
+                    </button>
                     <button onClick={() => setMode("upload")}>Upload GPX File</button>
                 </>
             )}
