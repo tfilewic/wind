@@ -56,7 +56,21 @@
   gap: 10px;
 }
 
-
+.reset-box{
+  position: fixed;
+  bottom: 94%;
+  left: 3%;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .route-grid {
   display: grid;
