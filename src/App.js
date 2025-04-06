@@ -4,8 +4,6 @@ import { MapContainer, TileLayer, Polyline } from "react-leaflet";  //leaflet co
 import "leaflet/dist/leaflet.css"; //leaflet css for map rendering
 import RouteBox from "./components/RouteBox"; 
 import ResetBox from "./components/ResetBox"; 
-
-//import GpxParser from "./components/GpxParser"; //for parsing gpx files
 import Recenter from "./components/Recenter"; //for recentering and rezooming map to fit route
 import WindArrows from "./components/WindArrows"; 
 import "./App.css";
@@ -18,10 +16,7 @@ let zoom = 15;
 function App() {
   
   const [coordinates, setCoordinates] = useState(null); //store parsed gpx coordinates
-  /*
-  useEffect(() => localStorage.removeItem("stravaToken"), []);  //clear strava auth token
-  console.log("cleared token-----------");
-*/
+  
   return (
     <div> 
       <MapContainer   

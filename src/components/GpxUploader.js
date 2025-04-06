@@ -13,10 +13,6 @@ import { gpx } from "@tmcw/togeojson";  //converts gpx xml to geojson
 
 
 function GpxUploader({ setCoordinates, setRouteUploaded }) {
-
-    //const [fileUploaded, setFileUploaded] = useState(false);
-
-
     //handle file upload event
     const fileUpload = (uploadEvent) => { 
         
