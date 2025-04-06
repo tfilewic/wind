@@ -58,8 +58,8 @@
 
 .reset-box{
   position: fixed;
-  bottom: 94%;
-  left: 3%;
+  top: 25px;
+  left: 50px;
   padding: 5px;
   background: rgba(255, 255, 255, 0.9);
   border: 2px solid #ccc;
@@ -84,7 +84,6 @@
   margin: 0 auto;
   overflow-y: auto; 
 } 
-
 
 .route-button {
   background: #fff;
