@@ -18,7 +18,13 @@ jobs:
           node-version: 18
 
       - run: npm ci
-      - run: npm run build
+      - name: Build with env vars
+        run: |
+          REACT_APP_STRAVA_ID=${{ secrets.REACT_APP_STRAVA_ID }} \
+          REACT_APP_STRAVA_SECRET=${{ secrets.REACT_APP_STRAVA_SECRET }} \
+          REACT_APP_OPENWEATHER_API_KEY=${{ secrets.REACT_APP_OPENWEATHER_API_KEY }} \
+          REACT_APP_STRAVA_REDIRECT_URI=${{ secrets.REACT_APP_STRAVA_REDIRECT_URI }} \
+          npm run build
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
@@ -39,4 +45,7 @@ jobs:
           AWS_REGION: us-east-1
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+
+
 
