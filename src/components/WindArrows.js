@@ -128,6 +128,7 @@ function WindArrows(){
             {gridPoints.map((point, index) => 
                 <div key={index}>
                     <Marker
+                        interactive={false}
                         position={[point.lat, point.lng]}
                         icon={L.icon({
                             iconUrl: "arrow.png",
@@ -138,6 +139,7 @@ function WindArrows(){
                         rotationOrigin="center center"  //rotate about center
                     />
                     <Marker
+                        interactive={false}
                         position={[point.lat, point.lng]}
                         icon={L.divIcon({
                             className: "wind-speed-label",
