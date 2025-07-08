@@ -93,7 +93,7 @@
   align-items: start;
   padding: 5px;
   max-width: 60vw;
-  max-height: 80vh;
+  max-height: 80dvh;
   margin: 0 auto;
   overflow-y: auto; 
 } 
