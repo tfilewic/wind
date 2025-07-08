@@ -54,9 +54,6 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-
-  max-height: 80vh;
-  overflow-y: auto;
 }
 
 .reset-box{
@@ -93,7 +90,7 @@
   align-items: start;
   padding: 5px;
   max-width: 60vw;
-  max-height: 80dvh;
+  max-height: 80vh;
   margin: 0 auto;
   overflow-y: auto; 
 } 
