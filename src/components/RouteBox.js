@@ -29,16 +29,23 @@ function RouteBox({ setCoordinates }) {
             {/* no mode selected- show two option buttons */}
             {!routeUploaded && !mode && (
                 <>  
-                    <button onClick={() => setMode("strava")}> 
+                    <button 
+                        className="upload-box-button"
+                        onClick={() => setMode("strava")}> 
                         {token ? 
                         "Import route from Strava" 
                         : 
-                        <img 
+                        <img className="strava-auth-image"
                             src="btn_strava_connect_with_white.png"
                             alt="Authenticate with Strava"
                         />} 
                     </button>
-                    <button onClick={() => setMode("upload")}>Upload GPX File</button>
+                    <button 
+                        className="upload-box-button"
+                        nClick={() => setMode("upload")}
+                    >
+                        Upload GPX File
+                    </button>
                 </>
             )}
 
