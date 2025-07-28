@@ -56,6 +56,22 @@
   gap: 10px;
 }
 
+.upload-box button {
+  width: 170px;
+  height: 25px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-box button img {
+  width: 170px;
+  height: auto;
+}
+
+
+
 .reset-box{
   position: fixed;
   top: 25px;

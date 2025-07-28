@@ -30,7 +30,13 @@ function RouteBox({ setCoordinates }) {
             {!routeUploaded && !mode && (
                 <>  
                     <button onClick={() => setMode("strava")}> 
-                        {token ? "Import route from Strava" : "Authenticate with Strava"} 
+                        {token ? 
+                        "Import route from Strava" 
+                        : 
+                        <img 
+                            src="btn_strava_connect_with_white.png"
+                            alt="Authenticate with Strava"
+                        />} 
                     </button>
                     <button onClick={() => setMode("upload")}>Upload GPX File</button>
                 </>
