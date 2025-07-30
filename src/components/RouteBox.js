@@ -42,7 +42,7 @@ function RouteBox({ setCoordinates }) {
                     </button>
                     <button 
                         className="upload-box-button"
-                        nClick={() => setMode("upload")}
+                        onClick={() => setMode("upload")}
                     >
                         Upload GPX File
                     </button>
